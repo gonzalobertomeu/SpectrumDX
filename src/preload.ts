@@ -3,7 +3,5 @@
 import {contextBridge, ipcRenderer} from 'electron/renderer'
 
 contextBridge.exposeInMainWorld('backend',{
-    // invoke: (method:string, params: any[]) => ipcRenderer.invoke(method, params)
-    createMedic: (firstName:string, lastName: string) => ipcRenderer.invoke('medic:create', firstName, lastName),
-    listMedic: () => ipcRenderer.invoke('medic:list')
+    call: (method:string, ...params: any[]) => ipcRenderer.invoke(method, ...params),
 })

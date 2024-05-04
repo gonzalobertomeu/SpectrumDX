@@ -1,14 +1,14 @@
 import { DataSource } from "typeorm"
-import { Medic } from "../domain/Medic"
 import { app } from 'electron'
 import * as path from 'path'
+import { entities } from "../domain/Entities"
 
-export const useSQLite = async (dbPath: string = '') => {
+export const useSQLite = async (dbPath: string = ''): Promise<DataSource> => {
     const databasePath = path.join(app.getPath('userData'), 'source', dbPath)
+    console.log(databasePath + ': is the path of DB')
     return await (new DataSource({
         type: 'better-sqlite3',
         database: databasePath,
-        synchronize: true,
-        entities: [Medic]
+        entities: entities
     })).initialize()
 }

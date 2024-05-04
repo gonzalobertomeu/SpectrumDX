@@ -1,6 +1,5 @@
 export interface backendAPI {
-    createMedic: Function
-    listMedic: Function
+    call: Function
 }
 
 declare global {

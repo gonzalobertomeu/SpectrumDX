@@ -54,18 +54,7 @@ app.on("activate", () => {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and import them here.
-ipcMain.handle('medic:create', async (event, ...args) => {
-	const backend = await Backend.getInstance();
-	const ctrl = backend.getMedicController()
-	const val = await ctrl.create(args[0],args[1]);
-	console.log(val);
-	return val;
-});
 
-ipcMain.handle('medic:list', async (event, ...args) => {
-	const backend = await Backend.getInstance();
-	const ctrl = backend.getMedicController()
-	const val = await ctrl.list();
-	console.log(val);
-	return val;
-});
+Backend.create().then((instance)=>{
+	instance.main()
+})

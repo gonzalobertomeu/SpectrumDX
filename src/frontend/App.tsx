@@ -6,13 +6,13 @@ export const App = () => {
     
     const invokeCreateMedic = async () => {
         console.log('Invoking create medic')
-        const value = await window.backend.createMedic('Gonzalo','Bertomeu')
+        const value = await window.backend.call('medic:create','Gonzalo','Bertomeu')
         console.log(value)
     }
 
     const invokeListMedic = async () => {
         console.log('Invoking create medic')
-        const values = await window.backend.listMedic()
+        const values = await window.backend.call('medic:list')
         setMedics(values)
     }
     return (
